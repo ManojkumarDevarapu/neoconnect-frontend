@@ -1,215 +1,275 @@
-# NeoConnect Complaint Management System – Frontend
+# NeoConnect – Complaint Management System (Frontend)
 
-The **NeoConnect Frontend** is a modern web interface built using **Next.js 14, React, and TailwindCSS**.
-It provides users, staff, secretariat, and administrators with an intuitive platform to submit complaints, track cases, participate in polls, and analyze complaint data.
+NeoConnect is a **role-based complaint and case management platform** designed to help organizations collect feedback, manage complaints, track resolution workflows, and maintain transparency.
 
-The frontend communicates with a **Node.js + Express REST API backend** and visualizes complaint management workflows through dashboards and analytics.
+The frontend application is built using **Next.js 14, React, and TailwindCSS**, providing a responsive and intuitive interface for different organizational roles including **Staff, Secretariat, Case Managers, and Administrators**.
+
+The application communicates with a **Node.js + Express REST API backend** backed by **MongoDB** for data storage.
 
 ---
 
 # System Architecture
 
-The NeoConnect platform follows a **full-stack architecture** where the frontend communicates with a REST API backend that manages business logic and database operations.
+NeoConnect follows a **modern full-stack architecture** where the frontend communicates with backend APIs to perform complaint submission, case management, polling, and analytics operations.
 
 ![System Architecture](docs/screenshots/architecture.png)
 
+Architecture Flow:
+
+```
+User
+   │
+   ▼
+Next.js Frontend
+   │
+Axios API Requests
+   │
+Node.js + Express REST API
+   │
+MongoDB Database
+```
+
 ---
 
-# Tech Stack
+# Technology Stack
 
-Frontend technologies used in the project:
+Frontend technologies used:
 
 * **Next.js 14**
 * **React**
 * **TailwindCSS**
 * **Axios**
+* **Recharts (Analytics Visualizations)**
+* **Context API (Authentication State)**
 * **ShadCN UI Components**
-* **Lucide Icons**
-* **Context API**
-
----
-
-# Project Structure
-
-```text
-frontend
-│
-├── docs
-│   └── screenshots
-│       ├── architecture.png
-│       ├── admin.dashboard.png
-│       ├── admin.analytics.png
-│       ├── admin.allcases.png
-│       ├── admin.addpoll.png
-│       ├── admin.hub.png
-│       ├── admin.usermanagement.png
-│       ├── casemanager.dashboard.png
-│       ├── staff.dashboard.png
-│       ├── staff.case.png
-│       ├── Secretariat.dashboard.png
-│       ├── Secretariat.assign.png
-│       ├── login.page.png
-│       └── register.page.png
-│
-├── src
-│   ├── app
-│   ├── components
-│   ├── context
-│   ├── lib
-│   ├── utils
-│   └── styles
-│
-└── README.md
-```
 
 ---
 
 # Key Features
 
-### User Authentication
+### Secure Authentication
 
-Users can securely register and log in to access the system.
+Users can securely **register and log in** to access the platform based on their assigned roles.
 
 ### Complaint Submission
 
-Users can submit complaints through structured forms.
+Staff members can submit complaints with:
+
+* category
+* severity level
+* department
+* location
+* detailed description
+* optional file attachment
 
 ### Case Tracking
 
-Users can monitor the status and progress of their submitted complaints.
+Each complaint receives a **unique tracking ID** allowing users to track case progress.
 
-### Role-Based Dashboards
+### Role-Based Access Control
 
-Different dashboards are available for:
+Different users have different dashboards and permissions:
 
-* **Admin**
-* **Case Manager**
-* **Secretariat**
-* **Staff**
+| Role         | Responsibilities                                 |
+| ------------ | ------------------------------------------------ |
+| Staff        | Submit and track complaints                      |
+| Secretariat  | Assign cases to case managers                    |
+| Case Manager | Monitor cases and update statuses                |
+| Admin        | System oversight, analytics, and user management |
 
-Each role has dedicated permissions and system capabilities.
+### Poll System
 
-### Poll Management
+Internal polling system allows staff to vote on workplace improvements.
 
-Admins can create polls and collect responses from users.
+### Analytics Dashboard
 
-### Complaint Analytics
+Administrators can view **data visualizations and statistics** of complaints across the organization.
 
-Dashboards display complaint statistics and system performance metrics.
+### Transparency Hub
+
+Public hub for transparency reports and meeting archives.
 
 ---
 
 # Application Screenshots
 
-## Login Page
+## Authentication
+
+### Login Page
+
+Users authenticate using their organizational credentials.
 
 ![Login](docs/screenshots/login.page.png)
 
 ---
 
-## Register Page
+### Register Page
+
+New users can register and select their role and department.
 
 ![Register](docs/screenshots/register.page.png)
 
 ---
 
-## Admin Dashboard
+# Staff Interface
 
-![Admin Dashboard](docs/screenshots/admin.dashboard.png)
+Staff members primarily interact with the system by submitting complaints and tracking their submissions.
 
----
+### Staff Dashboard
 
-## Admin Analytics
-
-![Admin Analytics](docs/screenshots/admin.analytics.png)
-
----
-
-## Admin – All Cases
-
-![All Cases](docs/screenshots/admin.allcases.png)
-
----
-
-## Admin – Add Poll
-
-![Add Poll](docs/screenshots/admin.addpoll.png)
-
----
-
-## Admin – Hub
-
-![Hub](docs/screenshots/admin.hub.png)
-
----
-
-## Admin – User Management
-
-![User Management](docs/screenshots/admin.usermanagement.png)
-
----
-
-## Case Manager Dashboard
-
-![Case Manager](docs/screenshots/casemanager.dashboard.png)
-
----
-
-## Secretariat Dashboard
-
-![Secretariat](docs/screenshots/Secretariat.dashboard.png)
-
----
-
-## Secretariat – Assign Case
-
-![Assign Case](docs/screenshots/Secretariat.assign.png)
-
----
-
-## Staff Dashboard
+Shows complaint statistics and recent cases submitted by the user.
 
 ![Staff Dashboard](docs/screenshots/staff.dashboard.png)
 
 ---
 
-## Staff Case Management
+### Submit a Complaint
 
-![Staff Case](docs/screenshots/staff.case.png)
+Staff can submit a new complaint with detailed information and optional file attachments.
+
+![Submit Case](docs/screenshots/staff.case.png)
+
+---
+
+# Secretariat Interface
+
+Secretariat members coordinate the complaint workflow by assigning cases.
+
+### Secretariat Dashboard
+
+Displays recent cases and system overview.
+
+![Secretariat Dashboard](docs/screenshots/Secretariat.dashboard.png)
+
+---
+
+### Assign Case to Case Manager
+
+Secretariat members assign complaints to appropriate case managers.
+
+![Assign Case](docs/screenshots/Secretariat.assign.png)
+
+---
+
+# Case Manager Interface
+
+Case managers monitor complaints and track their progress.
+
+### Case Manager Dashboard
+
+Shows case statistics and recently assigned complaints.
+
+![Case Manager Dashboard](docs/screenshots/casemanager.dashboard.png)
+
+---
+
+# Administrator Interface
+
+Administrators oversee the entire system and manage users, analytics, and complaints.
+
+---
+
+### Admin Dashboard
+
+Provides a summary of all complaints in the system.
+
+![Admin Dashboard](docs/screenshots/admin.dashboard.png)
+
+---
+
+### Manage All Cases
+
+Administrators can view and filter all complaints across the organization.
+
+![All Cases](docs/screenshots/admin.allcases.png)
+
+---
+
+### Complaint Analytics
+
+Visual dashboards showing complaint statistics by category, severity, and department.
+
+![Analytics](docs/screenshots/admin.analytics.png)
+
+---
+
+### Poll Management
+
+Admins can create and manage polls for organizational feedback.
+
+![Add Poll](docs/screenshots/admin.addpoll.png)
+
+---
+
+### Transparency Hub
+
+Provides transparency reports, meeting minutes, and organizational updates.
+
+![Public Hub](docs/screenshots/admin.hub.png)
+
+---
+
+### User Management
+
+Administrators can manage users, assign roles, and maintain system access.
+
+![User Management](docs/screenshots/admin.usermanagement.png)
+
+---
+
+# Project Structure
+
+```
+frontend
+│
+├── docs
+│   └── screenshots
+│
+├── src
+│   ├── app
+│   ├── components
+│   ├── context
+│   ├── utils
+│   └── styles
+│
+├── public
+├── package.json
+└── README.md
+```
 
 ---
 
 # Installation
 
-Clone the repository
+Clone the repository:
 
-```bash
+```
 git clone https://github.com/yourusername/neoconnect-frontend.git
 ```
 
-Navigate to the project
+Navigate into the project directory:
 
-```bash
+```
 cd neoconnect-frontend
 ```
 
-Install dependencies
+Install dependencies:
 
-```bash
+```
 npm install
 ```
 
 ---
 
-# Run the Application
+# Running the Application
 
-Start the development server
+Start the development server:
 
-```bash
+```
 npm run dev
 ```
 
-Application will run at:
+The application will run at:
 
 ```
 http://localhost:3000
@@ -219,7 +279,7 @@ http://localhost:3000
 
 # API Communication
 
-The frontend communicates with the backend REST API using **Axios**.
+The frontend communicates with the backend using **Axios**.
 
 Example request:
 
@@ -231,16 +291,16 @@ axios.get("/api/cases")
 
 # Future Improvements
 
-Possible enhancements:
+Potential enhancements:
 
 * Real-time notifications
-* Mobile optimized UI
-* Advanced analytics
-* Dark mode
-* Email alerts
+* Email alerts for complaint updates
+* Mobile optimized interface
+* Advanced analytics dashboards
+* Audit logs for case activities
 
 ---
 
 # Author
 
-Developed as part of the **NeoConnect Complaint Management System**.
+Developed as part of the **NeoConnect Complaint Management System** project.
