@@ -1,5 +1,34 @@
 # NeoConnect – Complaint Management System (Frontend)
 
+![Next.js](https://img.shields.io/badge/Next.js-14-black)
+![React](https://img.shields.io/badge/React-Frontend-blue)
+![Node.js](https://img.shields.io/badge/Node.js-Backend-green)
+![Express](https://img.shields.io/badge/Express-API-lightgrey)
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-green)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-UI-blue)
+
+---
+
+## Project Repositories
+
+| Service  | Repository                                                |
+| -------- | --------------------------------------------------------- |
+| Frontend | https://github.com/ManojkumarDevarapu/neoconnect-frontend |
+| Backend  | https://github.com/ManojkumarDevarapu/neoconnect-backend  |
+
+---
+
+## Key Highlights
+
+* Role-based complaint management system
+* Anonymous complaint submission
+* Case assignment workflow
+* Internal polling system for staff feedback
+* Analytics dashboard with visual insights
+* Transparency hub for reports and meeting archives
+
+---
+
 NeoConnect is a **role-based complaint and case management platform** designed to help organizations collect feedback, manage complaints, track resolution workflows, and maintain transparency.
 
 The frontend application is built using **Next.js 14, React, and TailwindCSS**, providing a responsive and intuitive interface for different organizational roles including **Staff, Secretariat, Case Managers, and Administrators**.
